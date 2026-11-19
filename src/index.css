@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+:root {
+  --midnight: #172a46;
+  --indigo: #394e91;
+  --aqua: #2ec4c6;
+  --champagne: #c6a46a;
+  --violet: #7a61b2;
+  --pearl: #f8f8f6;
+  --marble: #ecedea;
+  --ice: #e6f0f3;
+  --ivory: #f7f2e9;
+  --white: #ffffff;
+  --slate: #28313c;
+  --graphite: #424a52;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--slate);
+    background-color: var(--pearl);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: var(--pearl);
+    color: var(--slate);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    text-wrap: balance;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--aqua);
+    outline-offset: 3px;
+  }
+}
+
+/* Borderless transparent CTA design — zero rectangular boxes, borders, or pills */
+@layer components {
+  .cta-borderless {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0.55rem 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cta-borderless::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.25rem;
+    height: 1.5px;
+    background-color: currentColor;
+    transform: scaleX(0.35);
+    transform-origin: left center;
+    transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cta-borderless:hover::after,
+  .cta-borderless:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  .cta-borderless .cta-arrow {
+    transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cta-borderless:hover .cta-arrow,
+  .cta-borderless:focus-visible .cta-arrow {
+    transform: translateX(5px);
+  }
+}
+
+/* Subtle horizontal filmstrip scrollbar hiding while keeping keyboard/wheel/trackpad access */
+.editorial-strip {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(23, 42, 70, 0.25) transparent;
+}
+
+.editorial-strip::-webkit-scrollbar {
+  height: 4px;
+}
+
+.editorial-strip::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.editorial-strip::-webkit-scrollbar-thumb {
+  background-color: rgba(23, 42, 70, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

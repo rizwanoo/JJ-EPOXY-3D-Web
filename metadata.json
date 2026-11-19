@@ -1,0 +1,6 @@
+{
+  "name": "JJ EPOXY 3D — Custom Epoxy Floors, Countertops & 3D Design",
+  "description": "Custom epoxy floors, artistic countertops, and 3D floor designs for residential and commercial spaces by JJ Epoxy 3D.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
